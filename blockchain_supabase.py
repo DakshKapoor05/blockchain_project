@@ -9,8 +9,8 @@ from supabase import create_client, Client
 class BlockchainSupabaseDB:
     def __init__(self):
         # Initialize Supabase client
-        url = st.secrets["connections"]["supabase"]["url"]
-        key = st.secrets["connections"]["supabase"]["key"]
+        url = st.secrets["supabase_url"]
+        key = st.secrets["supabase_key"]
         self.supabase: Client = create_client(url, key)
         self.chain = []
         self.load_existing_chain()
@@ -269,3 +269,4 @@ class BlockchainSupabaseDB:
 
         except Exception as e:
             return False, f"Reset error: {str(e)}"
+
